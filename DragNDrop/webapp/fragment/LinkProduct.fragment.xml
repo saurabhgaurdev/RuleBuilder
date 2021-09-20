@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog contentHeight="60%" draggable="true" contentWidth="30%" title="Select Product" resizable="true">
+		<MultiComboBox id="prodCB" selectionChange="handleSelectionChange" class="sapUiLargeMarginBeginEnd" selectionFinish="handleSelectionFinish" width="700px"
+			items="{ path: 'ProductList>/nodes' }">
+			<core:Item key="{ProductList>pKey}" text="{ProductList>title}"/>
+		</MultiComboBox>
+		<beginButton>
+			<Button text="ok" type="Emphasized" enabled="{ path: 'view>/selectedNodes', formatter: '.Formatters.isItemSelected' }" tooltip="ok" press="onOkProdSelection"/></beginButton>
+		<endButton>
+			<Button text="cancel" tooltip="cancel" press="onCancelProdSelection"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,133 @@
+<mvc:View controllerName="DragNDrop.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:flex="sap.f"
+	xmlns:dnd="sap.ui.core.dnd" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout">
+	<App id="idAppControl">
+		<Page class="Transparent sapUiMarginSmall">
+			<headerContent>
+				<Toolbar>
+					<Text class="sapUiSmallMarginBegin sapThemeBarHeading" text="Strategy Builder"/>
+					<ToolbarSpacer/>
+				</Toolbar>
+			</headerContent>
+			<flex:FlexibleColumnLayout layout="TwoColumnsMidExpanded">
+				<flex:beginColumnPages>
+					<Page title="" showHeader="false">
+						<content>
+							<Panel expandable="true" id="stg_panel" expanded="false">
+								<headerToolbar>
+									<Toolbar style="Clear">
+										<Title text="Order Sourcing Strategy List"/>
+										<ToolbarSpacer/>
+										<Button id="panel-add-btn" icon="sap-icon://add" press="onNewStrategyAdd"/>
+									</Toolbar>
+								</headerToolbar>
+								<content>
+									<List id="stg_list" backgroundDesign="Transparent" mode="SingleSelect" selectionChange="onStrategySelection"
+										items="{ path: 'Strategies>/strategies'}">
+										<items>
+											<StandardListItem title="{Strategies>name}">
+												<customData>
+													<core:CustomData key="stKey" value="{Strategies>name}"/>
+												</customData>
+											</StandardListItem>
+										</items>
+									</List>
+								</content>
+							</Panel>
+							<Panel expandable="true" expanded="true">
+								<headerToolbar>
+									<Toolbar style="Clear">
+										<Title text="Rules"/>
+										<ToolbarSpacer/>
+										<Button icon="sap-icon://add" press="onRuleAdd"/>
+									</Toolbar>
+								</headerToolbar>
+								<content>
+									<List id="ruleList" backgroundDesign="Transparent" items="{ path: 'Rule>/Rules'}">
+										<items>
+											<StandardListItem title="{Rule>rulename}">
+												<customData>
+													<core:CustomData key="key" value="{Rule>key}"/>
+												</customData>
+											</StandardListItem>
+										</items>
+										<dragDropConfig>
+											<dnd:DragInfo groupName="moveRule" sourceAggregation="items" dragStart="onRuleDrag"/>
+										</dragDropConfig>
+									</List>
+								</content>
+							</Panel>
+							<Panel expandable="true" expanded="true">
+								<headerToolbar>
+									<Toolbar height="3rem" style="Clear">
+										<Title text="Sources"/>
+										<ToolbarSpacer/>
+										<Button icon="sap-icon://add" press="onWarehouseAdd"/>
+									</Toolbar>
+								</headerToolbar>
+								<content>
+									<List id="whList" backgroundDesign="Transparent" items="{ path: 'Model>/WRHouse'}">
+										<customData>
+											<core:CustomData key="listName" value="whList"/>
+										</customData>
+										<items>
+											<StandardListItem title="{Model>wrhname}">
+												<customData>
+													<core:CustomData key="wrhname" value="{Model>wrhname}"/>
+													<core:CustomData key="key" value="{Model>wrKey}"/>
+												</customData>
+											</StandardListItem>
+										</items>
+										<dragDropConfig>
+											<dnd:DragInfo groupName="moveSource" sourceAggregation="items" dragStart="onSourceDrag"/>
+										</dragDropConfig>
+									</List>
+								</content>
+							</Panel>
+							<Panel expandable="true" expanded="true">
+								<headerToolbar>
+									<Toolbar height="3rem" style="Clear">
+										<Title text="Available Strategies"/>
+										<ToolbarSpacer/>
+										<Button icon="sap-icon://add"/>
+									</Toolbar>
+								</headerToolbar>
+								<content>
+									<List id="strategyList" backgroundDesign="Transparent" items="{ path: 'Product>/StrategyCollection'}">
+										<items>
+											<StandardListItem title="{Product>Name}" counter="{Product>Quantity}">
+												<customData>
+													<core:CustomData key="key" value="{Product>key}"/>
+												</customData>
+											</StandardListItem>
+										</items>
+										<dragDropConfig>
+											<dnd:DragInfo groupName="movedata" sourceAggregation="items" dragStart="onDragStrategy"/>
+										</dragDropConfig>
+									</List>
+								</content>
+							</Panel>
+						</content>
+					</Page>
+				</flex:beginColumnPages>
+				<flex:midColumnPages>
+					<Page showFooter="false" id="mid_column_page">
+						<headerContent>
+							<Button icon="sap-icon://add" text="Add Strategy" press="onNewStrategyAdd"/>
+						</headerContent>
+						<MessagePage visible="{view>/showMessage}" showHeader="false" title="Create Strategy" icon="sap-icon://add-process" class="sapUiStdPage"
+							text="" description="No Selection"/>
+						<core:Fragment fragmentName="DragNDrop.fragment.buildStrategy" type="XML"/>
+						<footer>
+							<Toolbar>
+								<ToolbarSpacer/>
+								<Button type="Emphasized" text="Continue" press="onContPress"/>
+								<Button text="Cancel" press="onStgCancelPress"/>
+							</Toolbar>
+						</footer>
+					</Page>
+				</flex:midColumnPages>
+			</flex:FlexibleColumnLayout>
+		</Page>
+	</App>
+</mvc:View>

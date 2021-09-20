@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns:m="sap.m" xmlns:core="sap.ui.core" xmlns:dnd="sap.ui.core.dnd" xmlns="sap.suite.ui.commons.networkgraph">
+	<m:Dialog contentHeight="40%" contentWidth="60%" id="addRule" title="Create Rule" resizable="true">
+		<m:content>
+			<m:List width="400px">
+				<m:dragDropConfig>
+				<dnd:DragDropInfo dropPosition="Between" targetAggregation="items" sourceAggregation="items" dragStart="onDragSample"
+				drop="onDropSample"/>
+				</m:dragDropConfig>
+				<m:items>
+					<m:StandardListItem title="list item 1 " press="listPressed"/>
+					<m:StandardListItem title="list item 2" press="listPressed"/>
+					<m:StandardListItem title="list item 3" press="listPressed"/>
+					<m:StandardListItem title="list item 4" press="listPressed"/>
+					<m:StandardListItem title="list item 6" press="listPressed"/>
+					<m:StandardListItem title="list item 5" press="listPressed"/>
+					<m:StandardListItem title="list item 7" press="listPressed"/>
+				</m:items>
+			</m:List>
+		</m:content>
+	</m:Dialog>
+</core:FragmentDefinition>

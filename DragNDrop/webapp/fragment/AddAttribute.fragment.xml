@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Popover showHeader="false" class="sapUiContentPadding" contentWidth="400px" contentHeight="300px" resizable="true">
+		<Label labelFor="attribute-name" text="Attribute Name"/>
+		<Input id="attribute-name" liveChange="onAttrNameInput" required="true" type="Text" value="{newAttribute>/label}" />
+		<Label labelFor="attribute-value" text="Attribute Value"/>
+		<Input id="attribute-value" liveChange="onAttrValueInput" required="true" type="Text" value="{newAttribute>/value}"/>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button type="Emphasized" enabled="{ parts: [ {path: 'view>/isNewAttrValue'},{path: 'view>/isNewAttrName'}], formatter: '.Formatters.isEnableTwoArgs' }" text="Add" press="onAddAttribute"/>
+				<Button text="Cancel" press="onCancelAttribute"/>
+			</Toolbar>
+		</footer>
+	</Popover>
+</core:FragmentDefinition>

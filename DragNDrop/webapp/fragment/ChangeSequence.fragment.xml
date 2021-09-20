@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:dnd="sap.ui.core.dnd" xmlns:core="sap.ui.core">
+	<Dialog showHeader="false" class="sapUiContentPadding" contentWidth="400px" contentHeight="500px" resizable="true">
+		<customHeader>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Text text="Rules are added to the strategy"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<List backgroundDesign="Transparent" items="{ path: 'SelectedList>/'}">
+			<items>
+				<StandardListItem class="node_list_item" title="{SelectedList>rulename}"/>
+			</items>
+			<dragDropConfig>
+				<dnd:DragDropInfo dropPosition="Between" targetAggregation="items" sourceAggregation="items" drop="onChangeSequence"/>
+			</dragDropConfig>
+		</List>
+		<endButton>
+			<Button type="Emphasized" press="onPressOk" text="Ok"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

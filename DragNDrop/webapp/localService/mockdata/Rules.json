@@ -1,0 +1,39 @@
+{
+	"Rules": [{
+		"rulename": "Sample Rule 1",
+		"key": 4001,
+		"first_expression": "Product quantity",
+		"second_expression": "",
+		"condition": "greater than",
+		"ProductId": "HT-1001",
+		"icon": "sap-icon://activities",
+		"DateOfSale": "2017-03-26"
+	}, {
+		"rulename": "Sample Rule 2",
+		"key": 4002,
+		"first_expression": "Amount must be",
+		"second_expression": "",
+		"condition": "less than",
+		"ProductId": "HT-1002",
+		"icon": "sap-icon://activities",
+		"DateOfSale": "2017-03-26"
+	}, {
+		"rulename": "Sample Rule 3",
+		"key": 4003,
+		"first_expression": "Coupon cost must be",
+		"second_expression": "",
+		"condition": "greater than or equal to",
+		"ProductId": "HT-1003",
+		"icon": "sap-icon://activities",
+		"DateOfSale": "2017-03-26"
+	}, {
+		"rulename": "Sample Rule 4",
+		"key": 4004,
+		"first_expression": "Used super coins must be",
+		"second_expression": "",
+		"condition": "less than or equal",
+		"ProductId": "HT-1004",
+		"icon": "sap-icon://activities",
+		"DateOfSale": "2017-03-26"
+	}]
+}

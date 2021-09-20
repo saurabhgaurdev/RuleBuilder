@@ -1,0 +1,43 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog title="Enter Details" contentHeight="50%" contentWidth="70%">
+		<Label text="Name" class="sapUiLargeMarginBeginEnd " labelFor="stategyName"/>
+			<Input
+				id="stategyName"
+				class="sapUiLargeMarginBeginEnd sapUiMediumMarginBottom"
+				type="Text"
+				placeholder="Enter Name.."
+				liveChange="onStrategyNameChange"
+				value="{
+				path : 'Graph>/name',
+					type : 'sap.ui.model.type.String',
+					constraints : {
+						minLength: 1,
+						maxLength: 30
+					}
+				}"
+				/>
+
+			<Label text="Description" class="sapUiLargeMarginBeginEnd" labelFor="stategyDesc"/>
+			<Input
+				id= "stategyDesc"
+				class="sapUiLargeMarginBeginEnd "
+				type="Text"
+				placeholder="Enter Description ..."
+				liveChange="onStrategyDescChange"
+				value="{
+					path : 'Graph>/desc',
+					type : 'sap.ui.model.type.String',
+					constraints : {
+						minLength: 1,
+						maxLength: 30
+					}
+				}"/>
+		<beginButton>
+			<Button text="Save"  type="Emphasized" enabled="{ parts: [ {path: 'view>/isStgName'},{path: 'view>/isStgDesc'}], formatter: '.Formatters.isEnableTwoArgs' }" tooltip="Save" press="onSavePress"/></beginButton>
+		<endButton>
+			<Button text="Cancel" tooltip="Cancel" press="onCancelSave"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

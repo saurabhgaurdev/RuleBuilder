@@ -1,0 +1,27 @@
+.sapSuiteUiCommonsNetworkGraph>.sapSuiteUiCommonsNetworkGraphToolbar {
+    visibility: hidden;
+    display: none;
+}
+
+.vBox_list {
+    min-height: 200px;
+    border-style: dashed;
+    border-width: 2px;
+    border-radius: 5px;
+    margin: 8px;
+    padding: 2px;
+    padding-bottom: 10px;
+    background-color: #f7f7f7 !important;
+}
+
+
+.node_list_item {
+    margin: 6px;
+    border-radius: 7px;
+    border: 2px solid;
+}
+
+[title="Expand the first column"]
+{
+	visibility: hidden;
+}

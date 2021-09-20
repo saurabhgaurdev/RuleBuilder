@@ -1,0 +1,22 @@
+{
+	"nodeBoxWidth": 200,
+	"name": "",
+	"desc": "",
+	"nodes": [
+		{
+			"key": 0,
+			"type": "cart",
+			"title": "",
+			"icon": "sap-icon://cart",
+			"shape": "Circle",
+			"status": "Success"
+		}
+	],
+	"lines": [],
+	"groups": [
+		{
+			"key": "A",
+			"title": "Strategy"
+		}
+	]
+}

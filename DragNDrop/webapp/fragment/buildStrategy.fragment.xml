@@ -1,0 +1,84 @@
+<core:FragmentDefinition xmlns="sap.suite.ui.commons.networkgraph" xmlns:l="sap.ui.layout" xmlns:dnd="sap.ui.core.dnd"
+	xmlns:dndGraph="DragNDrop.customControls" xmlns:core="sap.ui.core" xmlns:layout="sap.suite.ui.commons.networkgraph.layout" xmlns:m="sap.m"
+	height="100%">
+	<dndGraph:Graph nodes="{Graph>/nodes}" lines="{Graph>/lines}" class="dndGraphClass" orientation="TopBottom" visible="false"
+		enableWheelZoom="false" enableZoom="true" id="strategyGraph">
+		<dndGraph:dragDropConfig>
+			<dnd:DropInfo groupName="movedata" targetAggregation="" drop="onDropStrategy"/>
+		</dndGraph:dragDropConfig>
+		<dndGraph:layoutAlgorithm>
+			<layout:LayeredLayout mergeEdges="false" nodeSpacing="200"/>
+		</dndGraph:layoutAlgorithm>
+		<dndGraph:nodes>
+			<dndGraph:Node key="{Graph>key}" title="{Graph>title}" icon="{Graph>icon}" showActionLinksButton="false" selected="false"
+				attributes="{path:'Graph>attributes', templateShareable:true}" width="{= ${Graph>shape}==='Box'? Number(450) : Number(100)}"
+				shape="{Graph>shape}" status="{Graph>status}">
+				<dndGraph:attributes>
+					<ElementAttribute icon="{Graph>icon}" labelStatus="{Graph>status}" valueStatus="{Graph>status}" label="{Graph>label}" value="{Graph>value}"/>
+				</dndGraph:attributes>
+				<dndGraph:actionButtons>
+					<ActionButton icon="sap-icon://sys-add" press="onAddAttributePop" enabled="{= ${Graph>shape}==='Box'? true : false}"
+						title="Add Extra Details"/>
+					<ActionButton icon="{= ${Graph>isFilterBox}=== false? 'sap-icon://add-filter' : 'sap-icon://clear-filter'}"
+						enabled="{= ${Graph>shape}==='Box'? true : false}" press="onFilterBtnClick"
+						title="{= ${Graph>isFilterBox}=== false? 'Open filter Box' : 'Close filter Box'}"/>
+				</dndGraph:actionButtons>
+				<dndGraph:content>
+					<m:VBox>
+						<m:VBox class="vBox_list" >
+							<m:OverflowToolbar>
+								<m:Title text="Rules"/>
+								<m:ToolbarSpacer/>
+								<m:Button icon="sap-icon://sorting-ranking" type="Transparent" press="onSortRulesRank" />
+							</m:OverflowToolbar>
+							<m:dragDropConfig>
+								<dnd:DropInfo groupName="moveRule" targetAggregation="" drop="onRuleDrop"/>
+							</m:dragDropConfig>
+							<m:List delete="onRuleDltPressed" mode="Delete" items="{path:'Graph>rules', templateShareable:false}" noDataText="No Rules are available">
+								<m:items>
+									<m:CustomListItem class="node_list_item">
+										<m:HBox justifyContent="SpaceBetween">
+											<m:VBox justifyContent="Center" class="sapUiTinyMarginBegin">
+												<m:Text
+													text="{parts:[{path:'Graph>first_expression'},{path:'Graph>second_expression'},{path:'Graph>condition'}], formatter:'.Formatters.ruleText' }"/>
+												<m:Label text="{Graph>rulename}"/>
+											</m:VBox>
+											<m:Button type="Transparent" press="onEditRuleVal" icon="sap-icon://edit">
+												<m:customData>
+													<core:CustomData key="xVal" value="{Graph>second_expression}"/>
+												</m:customData>
+											</m:Button>
+										</m:HBox>
+									</m:CustomListItem>
+								</m:items>
+							</m:List>
+						</m:VBox>
+						<m:VBox class="vBox_list" >
+							<m:Toolbar>
+								<m:Title text="Sources"/>
+							</m:Toolbar>
+							<m:dragDropConfig>
+								<dnd:DropInfo groupName="moveSource" drop="onSourceDrop"/>
+							</m:dragDropConfig>
+							<m:items>
+								<m:List items="{path:'Graph>sources', templateShareable:false}" delete="onWRDltPressed" mode="Delete" noDataText="No Sources are available">
+									<m:items>
+										<m:StandardListItem class="node_list_item" title="{Graph>wrhname}" icon="sap-icon://factory"/>
+									</m:items>
+								</m:List>
+							</m:items>
+						</m:VBox>
+						<m:VBox class="vBox_list" visible="{Graph>isFilterBox}" >
+							<m:Toolbar>
+								<m:Title text="Filters to be applied"/>
+							</m:Toolbar>
+						</m:VBox>
+					</m:VBox>
+				</dndGraph:content>
+			</dndGraph:Node>
+		</dndGraph:nodes>
+		<dndGraph:lines>
+			<Line from="{Graph>from}" to="{Graph>to}"/>
+		</dndGraph:lines>
+	</dndGraph:Graph>
+</core:FragmentDefinition>
